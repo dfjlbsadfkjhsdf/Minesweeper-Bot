@@ -1,11 +1,17 @@
+import time
 from selenium import webdriver
-import undetected_chromedriver as uc
-import pynput
+from pynput.mouse import Button, Controller
+mouse = Controller()
 
+from pynput.keyboard import Key, Controller
+keyboard = Controller()
 
-options = uc.ChromeOptions()
-driver = uc.Chrome(options=options, use_subprocess=False)
-
-minesweeperLink = "https://www.google.com/search?q=minesweeper&rlz=1C1VDKB_en-GBAU1163AU1163&oq=minesweeper&gs_lcrp=EgZjaHJvbWUqBggAEEUYOzIGCAAQRRg70gEIMTY0NGowajeoAgCwAgA&sourceid=chrome&source=chrome.ob&ie=UTF-8&safe=active&ssui=on"
 browser = webdriver.Chrome()
-browser.get(minesweeperLink)
+browser.get("https://www.google.com/fbx?fbx=minesweeper")
+keyboard.press(Key.f11)
+
+time.sleep(5)
+mouse.position = (683, 384)
+mouse.click(Button.left, 1)
+time.sleep(2)
+browser.save_screenshot("First.png")
